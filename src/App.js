@@ -1,15 +1,15 @@
 // import logo from "./logo.svg";
 import "./App.css";
 import Alert from "./components/Alert";
-// import About from "./components/About";
+import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import React, { useState } from 'react';
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 
 // let name = "Saini";
@@ -33,7 +33,7 @@ function App() {
       setMode('dark');
       document.body.style.backgroundColor = '#042743';
       showAlert("Dark mode has been enabled","success");
-      document.title = 'TextUtils - Dark Mode';
+      // document.title = 'TextUtils - Dark Mode';
       // setInterval(() => {
       //   document.title = 'TextUtils is amazing';
       // }, 2000);
@@ -45,7 +45,7 @@ function App() {
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert("Light mode has been enabled","success");
-      document.title = 'TextUtils - Light Mode';
+      // document.title = 'TextUtils - Light Mode';
     }
   }
   // const toggleMode = () =>{
@@ -74,20 +74,20 @@ function App() {
   // }
   return (
     <>
-    {/* <Router> */}
+    <Router>
     <Navbar title = "TextUtils" aboutUtils = "About Utilis" mode={mode} toggleMode={toggleMode}/>
     {/* <Navbar/> */}
     <Alert alert={alert}/>
     <div className="container my-3">
-    {/* <Routes> */}
+    <Routes> 
           {/* /users --> component1
           /users/home --> component2 */}
-          {/* <Route exact path="/about" element={<About />} /> */}
-          <TextForm heading="Enter the text to analyze" showAlert={showAlert} mode={mode} />
-          {/* <Route exact path="/" element={<TextForm heading="Enter the text to analyze" showAlert={showAlert} mode={mode} />} /> */}
-    {/* </Routes> */}
+          <Route exact path="/about" element={<About mode={mode}/>} />
+          {/* <TextForm heading="Enter the text to analyze" showAlert={showAlert} mode={mode} /> */}
+          <Route exact path="/" element={<TextForm heading="Test TextUtils - Word Counter, Character Counter" showAlert={showAlert} mode={mode} />} />
+    </Routes>
     </div>
-    {/* </Router> */}
+    </Router>
     </>
   );
 }
